@@ -1,0 +1,21 @@
+ant.importBuild 'build.xml'
+
+
+def antVersion = ant.properties['version']
+def src = ant.properties['src']
+
+task showAntProperties << {
+	println "Ant Version is "+ antVersion
+	println "Source location is "+ src
+
+}
+
+ant.properties['comments'] = "This comments added in Gradle"
+
+GradleProperties.doFirst {
+	println "Adding additional behavior before Ant task operations"
+}
+GradleProperties.doLast {
+	println "Adding additional behavior after Ant Task operations"
+}
+
